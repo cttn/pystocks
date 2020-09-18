@@ -39,7 +39,7 @@ stats.update()
 #stats.update(update_db=True) # realiza una actualizacion de la DB antes de asignar los datos a stats
 
 # Graficar distribución suavizada
-ax = stats.graph_dist(kind="max")
+ax = stats.graph_dist()
 plt.show()
 
 # Graficar Variación desde las PASO
