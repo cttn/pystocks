@@ -4,6 +4,7 @@ import datetime as dt
 import yfinance as yf
 import pandas as pd
 import requests
+import os
 
 
 class dbstocks:
@@ -34,10 +35,14 @@ class dbstocks:
                 'bcra': ['dolar_bcra_a3500']
                 }
 
-    def __init__(self, dbname="sqlite:///dbprices.db", log=True):
+    def __init__(self, dbname=None, log=True):
 
         #  DB PATH
-        self.dbname = dbname
+        if dbname is None:
+            mdir = os.path.dirname(__file__)
+            self.dbname = "sqlite:////" + str(os.path.join(mdir,
+                                                           "db",
+                                                           "dbprices.db"))
 
         #  Screen log boolean
         self.log = log

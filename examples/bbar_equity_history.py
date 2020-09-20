@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from dbstocks import dbstocks
+from pystocks.dbstocks import dbstocks
 import matplotlib.pyplot as plt
 
 dbs = dbstocks()
