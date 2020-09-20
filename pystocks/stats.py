@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from pystocks.dbstocks import dbstocks
+from pystocks.dbstocks import DBstocks
 import matplotlib.pyplot as plt
 
 
@@ -10,7 +10,7 @@ class DBstats:
     def __init__(self):
 
         #  DB handle
-        self.dbs = dbstocks()
+        self.dbs = DBstocks()
 
         #  Data for selected tickers.
         self.data = None

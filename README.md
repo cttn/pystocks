@@ -7,11 +7,11 @@ con los datos disponibles en Yahoo Finance.
 
 Por el momento, consta de los siguientes archivos:
 
-#### pystocks/db/dbprices.db
+#### db/dbprices.db
 Base de datos (sqlite) con información sobre cotizantes argentinas desde 1993. Es fácilmente actualizable
 en forma automática utilizando la clase dbstocks.
 
-#### pystocks/dbstocks.py (in progress)
+#### dbstocks.py (in progress)
 Encapsula la base de datos. Permite actualizarla y obtener datos históricos.
 
 #### examples/
@@ -23,8 +23,8 @@ Sin embargo, la versión actual funciona bien consultas simples y actualización
 
 ```python
 # Uso de dbstocks.py
-from pystocks.dbstocks import dbstocks
-dbs = dbstocks()
+from pystocks.dbstocks import DBstocks
+dbs = DBstocks()
 
 #  Actualizar automáticamente los tickers para los cuales Yahoo finance tiene datos.
 dbs.update()  

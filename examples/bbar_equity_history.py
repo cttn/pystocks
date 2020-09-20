@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-from pystocks.dbstocks import dbstocks
+from pystocks.dbstocks import DBstocks
 import matplotlib.pyplot as plt
 
-dbs = dbstocks()
+dbs = DBstocks()
 
 #  BBAR
 bbar = dbs.get_prices("bbar", start="1991-01-01")

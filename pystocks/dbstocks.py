@@ -7,7 +7,7 @@ import requests
 import os
 
 
-class dbstocks:
+class DBstocks:
     """This class encapsulates the db"""
 
     #  There are a lot more tickers in the DB, since 1993. However, dtickers
