@@ -33,7 +33,7 @@ dbs.update()
 bbar = dbs.get_prices("bbar", start="1991-01-01") 
 
 # Uso de stats.py
-from pystocks.dbstocks import dbstocks
+from pystocks.stats import DBstats
 stats = DBstats()
 
 # Obtener datos desde la DB
