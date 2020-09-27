@@ -128,8 +128,8 @@ class DBstats:
             width = p.get_width()
             loc = width + 1.8
             if width < 0:
-                 loc = width - 6.5
-            ax.annotate(str(int(np.round(p.get_width(), 0))),
+                 loc = width - 10
+            ax.annotate(str(int(np.round(p.get_width(), 0))) + " %",
                         (loc, p.get_y()))
         return ax
 
