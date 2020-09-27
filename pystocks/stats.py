@@ -133,7 +133,7 @@ class DBstats:
                         (loc, p.get_y()))
         return ax
 
-    def graph_dist(self):
+    def graph_dist(self,xlim=None):
         """ Make a smoothed gaussian plot with dollar returns of
         self.since ..."""
 
@@ -148,7 +148,7 @@ class DBstats:
         ax = data.plot.kde(bw_method="silverman",
                            grid=True,
                            title="Distribución de resultados en dólares",
-                           color=['blue', 'orange', 'green'])
+                           color=['blue', 'orange', 'green'],xlim=xlim)
 
         #  Get lines
         lmin = ax.lines[1]
