@@ -106,15 +106,15 @@ class DBstats:
                               ).dropna().iloc[-1].sort_values()
         return None
 
-    def graph_barh(self, kind="max"):
+    def graph_barh(self, kind="max", xlim=None, grid=True):
         """ Make desired barh plots """
         tit = None
         if kind == 'max':
-            tit = "Caída en dólares desde máximos (%)"
+            tit = "Variación en dólares desde máximos (%)"
         elif kind == 'min':
-            tit = "Suba en dólares desde mínimos (%)"
+            tit = "Variación en dólares desde mínimos (%)"
         elif kind == 'paso':
-            tit = "Caída en dólares desde las PASO (%)"
+            tit = "Variación en dólares desde las PASO (%)"
         else:
             return SystemExit("[Error] graph_barh: unknown kind")
 
@@ -123,10 +123,14 @@ class DBstats:
 
         #  Clear matplotlib garbage
         plt.clf()
-        ax = res.plot(kind='barh', grid=True, title=tit, figsize=(8, 16))
+        ax = res.plot(kind='barh', grid=grid, title=tit, figsize=(8, 16),xlim=xlim)
         for p in ax.patches:
-            ax.annotate(str(np.round(p.get_width(), 1)),
-                        (p.get_width()*1.05, p.get_y()))
+            width = p.get_width()
+            loc = width + 1.8
+            if width < 0:
+                 loc = width - 6.5
+            ax.annotate(str(int(np.round(p.get_width(), 0))),
+                        (loc, p.get_y()))
         return ax
 
     def graph_dist(self):

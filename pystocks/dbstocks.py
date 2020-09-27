@@ -40,7 +40,7 @@ class DBstocks:
         #  DB PATH
         if dbname is None:
             mdir = os.path.dirname(__file__)
-            self.dbname = "sqlite:////" + str(os.path.join(mdir,
+            self.dbname = "sqlite:///" + str(os.path.join(mdir,
                                                            "db",
                                                            "dbprices.db"))
 
