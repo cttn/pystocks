@@ -82,7 +82,7 @@ class DBstats:
 
     def compute_var_since(self, start='2017-01-01'):
         """Populates self.since dict"""
-        data = self.data_usd.loc[start:]
+        data = self.data_usd.loc[start:].fillna(method='ffill')
 
         #  Var since max
         self.since['max'] = (100. *
@@ -98,12 +98,15 @@ class DBstats:
                                       ).subtract(1)
                              ).dropna().iloc[-1].sort_values()
 
+        #  2020
+        self.since['ytd'] = (100. *
+                              data.iloc[-1].div(data.loc['2020-01-01':].iloc[0]).subtract(1)
+                              ).dropna().sort_values()
+
         #  Var sin PASO
         self.since['paso'] = (100. *
-                              data.div(data.loc['2019-08-11':].dropna().iloc[0],
-                                       axis=1
-                                       ).subtract(1)
-                              ).dropna().iloc[-1].sort_values()
+                              data.iloc[-1].div(data.loc['2019-08-11':].iloc[0]).subtract(1)
+                              ).dropna().sort_values()
         return None
 
     def graph_barh(self, kind="max", xlim=None, grid=True):
@@ -115,6 +118,8 @@ class DBstats:
             tit = "Variación en dólares desde mínimos (%)"
         elif kind == 'paso':
             tit = "Variación en dólares desde las PASO (%)"
+        elif kind == 'ytd':
+            tit = "Variación en dólares en lo que va de 2020 (%)"
         else:
             return SystemExit("[Error] graph_barh: unknown kind")
 
