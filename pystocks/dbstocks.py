@@ -168,14 +168,18 @@ class DBstocks:
             for value in value_dict[ticker]:
                 value_date = value['date'].strftime("%Y-%m-%d")
                 exists = self.session.query(ticker_table).filter_by(date=value_date).scalar() is not None
-                if not exists:
-                    query = db.insert(ticker_table)
-                    results = self.connect.execute(query, value)
-                else:
-                    query = db.update(ticker_table).where(
-                            ticker_table.c.date == value_date).values(
+                try:
+                    if not exists:
+                        query = db.insert(ticker_table)
+                        results = self.connect.execute(query, value)
+                    else:
+                        query = db.update(ticker_table).where(
+                                ticker_table.c.date == value_date).values(
                                     {i: value[i] for i in value if i != 'date'})
-                    results = self.connect.execute(query, value)
+                        results = self.connect.execute(query, value)
+                except:
+                    message = "[db] Could not update " + ticker
+                    print(message)
 
     def _upsert_yahoo_data(self, start, end=None, category="y"):
         """Return value dict for upsert from yahoo data"""

@@ -41,11 +41,11 @@ plt.title("BBAR: Cotización histórica de TODO el equity desde 1993")
 plt.ylabel("Millones de dólares")
 
 #  Ciclo
-liny = np.linspace(1993,2021,1000)
-periodo = 8
-fase = 0.7
+#liny = np.linspace(1993,2021,1000)
+#periodo = 8
+#fase = 0.7
 
-plt.plot(liny, 800*np.sin(fase*np.pi + 2*np.pi*liny/float(periodo))+1000, 'k--',
-         label="Ciclo " +str(periodo)+ " años")
-#plt.savefig("BBAR_ciclox.png")
-plt.show()
+#plt.plot(liny, 800*np.sin(fase*np.pi + 2*np.pi*liny/float(periodo))+1000, 'k--',
+#         label="Ciclo " +str(periodo)+ " años")
+plt.savefig("BBARhist.png")
+#plt.show()
