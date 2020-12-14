@@ -175,18 +175,11 @@ class DBstocks:
                     else:
                         query = db.update(ticker_table).where(
                                 ticker_table.c.date == value_date).values(
-<<<<<<< HEAD
                                     {i: value[i] for i in value if i != 'date'})
                         results = self.connect.execute(query, value)
                 except:
                     message = "[db] Could not update " + ticker
                     print(message)
-=======
-                                        {i: value[i] for i in value if i != 'date'})
-                        results = self.connect.execute(query, value)
-                except:
-                    print("Error updateing " + ticker)
->>>>>>> b21b6681667ed89a7f2b7c3294e9166dd29c9481
 
     def _upsert_yahoo_data(self, start, end=None, category="y"):
         """Return value dict for upsert from yahoo data"""
