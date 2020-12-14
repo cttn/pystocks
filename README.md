@@ -27,7 +27,7 @@ from pystocks.dbstocks import DBstocks
 dbs = DBstocks()
 
 #  Actualizar automáticamente los tickers para los cuales Yahoo finance tiene datos.
-dbs.update()  
+dbs.update_db()  
 
 #Obtiene un DataFrame con todos los datos disponibles para $BBAR desde 1991.
 bbar = dbs.get_prices("bbar", start="1991-01-01") 
