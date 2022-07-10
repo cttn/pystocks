@@ -51,6 +51,7 @@ class DBstocks:
         self.engine, self.connect, self.metadata = self.get_connection()
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
+        self.inspect = db.inspect(self.engine)
 
     def get_connection(self):
         """Returns db handle"""
@@ -136,7 +137,7 @@ class DBstocks:
         """Returns db handle for the ticker table."""
 
         #  If table don't exist, Create.
-        if not self.engine.dialect.has_table(self.engine, ticker):
+        if not self.inspect.has_table(ticker):
             if self.log:
                 message = ("[db] Table for ticker " + str(ticker) +
                            " does not exist.")
